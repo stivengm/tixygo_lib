@@ -4,6 +4,7 @@ import {
 } from './models/index';
 import * as cryptoJS from 'crypto-js';
 
+var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
 export const generateHashToken = (
     informationRequest: GenerateHashTokenMapVMTModel,
@@ -54,8 +55,6 @@ export const generateRandomId = (
     onError: (response: ResponseRequestModel) => void
 ) => {
 
-    const characters ='ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
-
     if (generateById != '') {
 
         let result = "";
@@ -83,3 +82,30 @@ export const generateRandomId = (
     }
 
 }
+
+export const generateTransactionId = (
+    onSuccess: (response: ResponseRequestModel) => void,
+    onError: (response: ResponseRequestModel) => void
+) => {
+
+    const length = 16;
+    let transactionId = '';
+
+    for (let i = 0; i < length; i++) {
+        const randomIndex = Math.floor(Math.random() * characters.length);
+        transactionId += characters[randomIndex];
+    }
+
+    var responseRequest: ResponseRequestModel = {
+        code: 'TRX001',
+        message: 'Se ha generado satisfactoriamente el transactionId',
+        data: transactionId
+    }
+
+    if (transactionId.length < 16) {
+        onError(responseRequest);
+        return;
+    }
+
+    onSuccess(responseRequest);
+};
