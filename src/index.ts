@@ -6,6 +6,21 @@ import * as cryptoJS from 'crypto-js';
 
 var characters = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789';
 
+var months: Array<string> = [
+    'Enero',
+    'Febrero',
+    'Marzo',
+    'Abril',
+    'Mayo',
+    'Junio',
+    'Julio',
+    'Agosto',
+    'Septiembre',
+    'Octubre',
+    'Noviembre',
+    'Diciembre'
+];
+
 export const generateHashToken = (
     informationRequest: GenerateHashTokenMapVMTModel,
     onSuccess: (response: ResponseRequestModel) => void,
@@ -109,3 +124,16 @@ export const generateTransactionId = (
 
     onSuccess(responseRequest);
 };
+
+export const formattedDate = (timeStamp: any) => {
+
+    if (timeStamp == null) return "Próximamente";
+
+    const date = new Date(timeStamp.seconds * 1000);
+
+    const day = date.getDate();
+    const month = date.getMonth();
+    const year = date.getFullYear();
+
+    return day + " " + months[month - 1] + " " + year;
+}
