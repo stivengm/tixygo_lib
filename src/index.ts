@@ -143,7 +143,7 @@ export const formattedTime = (timeStamp: any) => {
     const date = new Date(timeStamp.seconds * 1000);
 
     let hours = date.getHours();
-    let minutes = date.getHours();
+    let minutes = date.getMinutes();
 
     const ampm = hours >= 12 ? "PM" : "AM";
     const formattedHours = hours % 12 === 0 ? "12" : (hours % 12).toString().padStart(2, "0");
