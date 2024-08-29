@@ -125,7 +125,7 @@ export const generateTransactionId = (
     onSuccess(responseRequest);
 };
 
-export const formattedDate = (timeStamp: any) => {
+export const formattedDate = (timeStamp: any, dateComplete: boolean = false) => {
 
     if (timeStamp == null) return "Próximamente";
 
@@ -135,7 +135,9 @@ export const formattedDate = (timeStamp: any) => {
     const month = date.getMonth();
     const year = date.getFullYear();
 
-    return day + " " + months[month - 1] + " " + year;
+    const dateOf = dateComplete ? " de " : " ";
+
+    return day + dateOf + months[month] + " " + year;
 }
 
 export const formattedTime = (timeStamp: any) => {
