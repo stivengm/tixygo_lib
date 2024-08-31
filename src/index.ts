@@ -128,7 +128,7 @@ export const generateTransactionId = (
 export const formattedDate = (time: string, dateComplete: boolean = false) => {
 
     if (time == null) return "Próximamente";
-    
+
     const timeSplit = time.split('/');
     
     const day = timeSplit[0];
@@ -137,7 +137,7 @@ export const formattedDate = (time: string, dateComplete: boolean = false) => {
 
     const dateOf = dateComplete ? " de " : " ";
 
-    return day + dateOf + months[month] + " " + year;
+    return day + dateOf + months[month - 1] + " " + year;
 }
 
 export const formattedTime = (timeStamp: any) => {
