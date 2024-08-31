@@ -125,15 +125,15 @@ export const generateTransactionId = (
     onSuccess(responseRequest);
 };
 
-export const formattedDate = (timeStamp: any, dateComplete: boolean = false) => {
+export const formattedDate = (time: string, dateComplete: boolean = false) => {
 
-    if (timeStamp == null) return "Próximamente";
-
-    const date = new Date(timeStamp.seconds * 1000);
-
-    const day = date.getDate();
-    const month = date.getMonth();
-    const year = date.getFullYear();
+    if (time == null) return "Próximamente";
+    
+    const timeSplit = time.split('/');
+    
+    const day = timeSplit[0];
+    const month = parseInt(timeSplit[1]);
+    const year = timeSplit[2];
 
     const dateOf = dateComplete ? " de " : " ";
 
