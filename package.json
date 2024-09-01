@@ -1,6 +1,6 @@
 {
   "name": "tixygo-lib",
-  "version": "1.0.8",
+  "version": "1.0.10",
   "description": "",
   "license": "MIT",
   "main": "dist/index.js",

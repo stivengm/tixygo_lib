@@ -129,24 +129,18 @@ export const formattedDate = (time: string, dateComplete: boolean = false) => {
 
     if (time == null) return "Próximamente";
 
-    const timeSplit = time.split('/');
+    const [ day, month, year ] = time.split('/').map(Number);
     
-    const day = timeSplit[0];
-    const month = parseInt(timeSplit[1]);
-    const year = timeSplit[2];
-
     const dateOf = dateComplete ? " de " : " ";
 
     return day + dateOf + months[month - 1] + " " + year;
 }
 
 export const formattedTime = (time: string) => {
-    
-    const timeSplit = time.split(':');
 
-    const hours = timeSplit[0];
-    const minutes = timeSplit[1];
-    const ampm = timeSplit[2];
+    const [ hours, minutes, ampm ] = time.split(':');
 
-    return hours + ':' + minutes + ' ' + ampm.toUpperCase();
+    const parserMinutes = parseInt(minutes) <= 9 ? '0' + minutes : minutes;
+
+    return hours + ':' + parserMinutes + ' ' + ampm.toUpperCase();
 }
