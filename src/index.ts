@@ -140,7 +140,15 @@ export const formattedTime = (time: string) => {
 
     const [ hours, minutes, ampm ] = time.split(':');
 
-    const parserMinutes = parseInt(minutes) <= 9 ? '0' + minutes : minutes;
+    const parserMinutes = parseInt(minutes) <= 9 ? minutes == '00' ? minutes : '0' + minutes : minutes;
 
     return hours + ':' + parserMinutes + ' ' + ampm.toUpperCase();
+}
+
+
+export const dateStringToDate = (date: string) => {
+
+    const [ day, month, year ] = date.split('/').map(Number);
+
+    return new Date(year, month - 1, day);
 }
