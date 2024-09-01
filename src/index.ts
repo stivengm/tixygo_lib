@@ -140,16 +140,13 @@ export const formattedDate = (time: string, dateComplete: boolean = false) => {
     return day + dateOf + months[month - 1] + " " + year;
 }
 
-export const formattedTime = (timeStamp: any) => {
+export const formattedTime = (time: string) => {
+    
+    const timeSplit = time.split(':');
 
-    const date = new Date(timeStamp.seconds * 1000);
+    const hours = timeSplit[0];
+    const minutes = timeSplit[1];
+    const ampm = timeSplit[2];
 
-    let hours = date.getHours();
-    let minutes = date.getMinutes();
-
-    const ampm = hours >= 12 ? "PM" : "AM";
-    const formattedHours = hours % 12 === 0 ? "12" : (hours % 12).toString().padStart(2, "0");
-    const formattedMinutes = minutes.toString().padStart(2, "0");
-
-    return `${formattedHours}:${formattedMinutes}${ampm}`;
+    return hours + ':' + minutes + ' ' + ampm.toUpperCase();
 }
