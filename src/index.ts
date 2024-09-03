@@ -160,5 +160,5 @@ export const getMonthYearToString = (date: string) => {
     const [ day, month, year ] = date.split('/').map(Number);
     console.log(day);
 
-    return month + "/" + year;
+    return month + "-" + year;
 }
