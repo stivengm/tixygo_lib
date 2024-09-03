@@ -125,11 +125,11 @@ export const generateTransactionId = (
     onSuccess(responseRequest);
 };
 
-export const formattedDate = (time: string, dateComplete: boolean = false) => {
+export const formattedDate = (date: string, dateComplete: boolean = false) => {
 
-    if (time == null) return "Próximamente";
+    if (date == null) return "Próximamente";
 
-    const [ day, month, year ] = time.split('/').map(Number);
+    const [ day, month, year ] = date.split('/').map(Number);
     
     const dateOf = dateComplete ? " de " : " ";
 
@@ -151,4 +151,14 @@ export const dateStringToDate = (date: string) => {
     const [ day, month, year ] = date.split('/').map(Number);
 
     return new Date(year, month - 1, day);
+}
+
+export const getMonthYearToString = (date: string) => {
+
+    if (date == null) return "Próximamente";
+
+    const [ day, month, year ] = date.split('/').map(Number);
+    console.log(day);
+
+    return month + "/" + year;
 }
