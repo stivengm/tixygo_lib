@@ -98,6 +98,24 @@ export const generateRandomId = (
 
 }
 
+export const generateDateEventId = (
+    onSuccess: (response: ResponseRequestModel) => void
+) => {
+
+    let id = "";
+    for (let i = 0; i < 10; i++) {
+        id += characters.charAt(Math.floor(Math.random() * characters.length));
+    }
+
+    var responseRequest: ResponseRequestModel = {
+        code: 'DE001',
+        message: 'Se ha generado satisfactoriamente el ID para la fecha del evento',
+        data: id
+    }
+
+    onSuccess(responseRequest);
+}
+
 export const generateTransactionId = (
     onSuccess: (response: ResponseRequestModel) => void,
     onError: (response: ResponseRequestModel) => void
@@ -151,6 +169,28 @@ export const dateStringToDate = (date: string) => {
     const [ day, month, year ] = date.split('/').map(Number);
 
     return new Date(year, month - 1, day);
+}
+
+export const timeStringToDate = (time: string) =>  {
+
+    const [ hours, minutes, ampm ] = time.split(':');
+
+    const now = new Date();
+
+    let hour = hours;
+
+    if (ampm === "pm") {
+        hour = 12 + hours;
+    } else {
+        hour = hours;
+    }
+
+    now.setHours(parseInt(hour));
+    now.setMinutes(parseInt(minutes));
+    now.setSeconds(0);
+    now.setMilliseconds(0);
+
+    return now;
 }
 
 export const getMonthYearToString = (date: string) => {
