@@ -193,6 +193,23 @@ export const timeStringToDate = (time: string) =>  {
     return now;
 }
 
+export const fullDateStringToDate = (date: string, time: string) => {
+
+    let newDate = dateStringToDate(date);
+    let newTime = timeStringToDate(time);
+    
+    const now = new Date();
+
+    now.setDate(newDate.getDate());
+    now.setMonth(newDate.getMonth());
+    now.setFullYear(newDate.getFullYear());
+
+    now.setMinutes(newTime.getMinutes());
+    now.setHours(newTime.getHours());
+
+    return now;
+}
+
 export const getMonthYearToString = (date: string) => {
 
     if (date == null) return "Próximamente";
