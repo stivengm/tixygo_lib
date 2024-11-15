@@ -220,7 +220,7 @@ export const getMonthYearToString = (date: string) => {
     return month + "-" + year;
 }
 
-export const currentDate = () => {
+export const getCurrentDate = () => {
     const options: Intl.DateTimeFormatOptions = {
         timeZone: 'America/Mexico_City',
         hour: '2-digit',
