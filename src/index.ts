@@ -177,15 +177,15 @@ export const timeStringToDate = (time: string) =>  {
 
     const now = new Date();
 
-    let hour = hours;
+    let hour = parseInt(hours);
 
     if (ampm === "pm") {
-        hour = 12 + hours;
+        hour = 12 + parseInt(hours);
     } else {
-        hour = hours;
+        hour = parseInt(hours);
     }
 
-    now.setHours(parseInt(hour));
+    now.setHours(hour);
     now.setMinutes(parseInt(minutes));
     now.setSeconds(0);
     now.setMilliseconds(0);
