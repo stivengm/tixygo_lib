@@ -222,7 +222,7 @@ export const getMonthYearToString = (date: string) => {
 
 export const getDateFromTimeStamp = (timeStamp: any) => {
 
-    const date = new Date(timeStamp);
+    const date = new Date(timeStamp.seconds * 1000 + timeStamp.nanoseconds / 1000000);
 
     const day = date.getDate();
     const month = date.toLocaleString('es-ES', { month: 'long' });
