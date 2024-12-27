@@ -219,3 +219,14 @@ export const getMonthYearToString = (date: string) => {
 
     return month + "-" + year;
 }
+
+export const getDateFromTimeStamp = (timeStamp: any) => {
+
+    const date = new Date(timeStamp);
+
+    const day = date.getDate();
+    const month = date.toLocaleString('es-ES', { month: 'long' });
+    const year = date.getFullYear();
+
+    return `${day} de ${month} ${year}`;
+}
